@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "CRXJS - Content Script Loading Delay Test",
+    "version": "1.0.0",
+    "action": { "default_popup": "index.html" },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+      },
+    "permissions": ["scripting"], 
+    "web_accessible_resources": [
+        {
+          "resources": ["test.js"],
+          "matches": ["<all_urls>"]
+        }
+      ],
+      "content_scripts": [
+        {
+          "matches": ["*://*/*"],
+          "js": ["content.js"],
+          "run_at": "document_start"
+        }
+      ],    
+      "host_permissions": ["*://*/*"]
+  }
